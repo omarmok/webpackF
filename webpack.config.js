@@ -2,14 +2,16 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const webpack = require('webpack');
+const glob = require('glob');
+const PurifyCSSPlugin = require('purifycss-webpack');
 const isProd = process.env.NODE_ENV === 'production';
-var cssDev =['style-loader', 'css-loader','sass-loader'];
+const cssDev =['style-loader', 'css-loader','sass-loader'];
 cssProde = ExtractTextPlugin.extract({
   fallbackLoader: 'style-loader',
   loader: ['css-loader','sass-loader'],
   publicPath: './dist'
 });
-var cssConfig = isProd  ? cssProde :cssDev;
+const cssConfig = isProd  ? cssProde :cssDev;
 
 const path = require("path");
 
@@ -71,7 +73,10 @@ module.exports = {
             disable: !isProd,
             allChunks: true
         }),
-        new webpack.HotModuleReplacementPlugin()
+        new webpack.HotModuleReplacementPlugin(),
+        new PurifyCSSPlugin({
+          paths: glob.sync(path.join(__dirname, 'src/*.html')),
+        })
     ]
 };
 
