@@ -3,7 +3,8 @@ $maicolor:red;
 $secondcolor:#fff;
 
 body {
-    background-color: $maicolor;
+    // background-color: $maicolor;
+    background: url('../img/oma_IMG.jpg') center center no-repeat;
     font:600 40px 'tahoma';
     p {
         color: $secondcolor;
