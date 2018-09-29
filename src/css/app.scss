@@ -1,0 +1,11 @@
+
+$maicolor:red;
+$secondcolor:#fff;
+
+body {
+    background-color: $maicolor;
+    font:600 40px 'tahoma';
+    p {
+        color: $secondcolor;
+    }
+}
