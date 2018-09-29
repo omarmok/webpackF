@@ -30,7 +30,8 @@ module.exports = {
               test: /\.(gif|png|jpe?g|svg)$/i,
               use: [
                 // 'file-loader',
-                'file-loader?name=[name].[ext]&outputPath=img/',  //  to make img title same name
+                'file-loader?name=img/[name][ext]', // to short
+                // 'file-loader?name=[name].[ext]&outputPath=img/&publicPath=img/',  //  to make img title same name
                 'image-webpack-loader'
 
                // use: 'file-loader?name[hash:6][name].[ext]&outputPath=img/' make img title  lenth

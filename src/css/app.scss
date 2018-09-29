@@ -4,7 +4,7 @@ $secondcolor:#fff;
 
 body {
     // background-color: $maicolor;
-    background: url('../img/oma_IMG.jpg') center center no-repeat;
+    background: url('../img/oma_IMG.jpg') center center no-repeat $maicolor;
     font:600 40px 'tahoma';
     p {
         color: $secondcolor;
