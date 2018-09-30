@@ -8,14 +8,16 @@ const isProd = process.env.NODE_ENV === 'production';
 const cssDev =['style-loader', 'css-loader','sass-loader'];
 cssProde = ExtractTextPlugin.extract({
   fallbackLoader: 'style-loader',
-  loader: ['css-loader','sass-loader'],
-  publicPath: './dist'
+  loader: ['css-loader?minimize=true','sass-loader',], 
+  publicPath: './dist',
+
 });
 const cssConfig = isProd  ? cssProde :cssDev;
 
 const path = require("path");
 
 module.exports = {
+ 
     entry: './src/app.js',
     output: {
         path: path.resolve(__dirname, "dist"),
@@ -26,17 +28,20 @@ module.exports = {
             {
                 test: /\.scss$/,
                 use: cssConfig
-
             },
             {
-              test: /\.(gif|png|jpe?g|svg)$/i,
+              test: /\.(gif|png|jpe?g|svg|)$/i,
               use: [
                 // 'file-loader',
-                'file-loader?name=img/[name][ext]', // to short
-                // 'file-loader?name=[name].[ext]&outputPath=img/&publicPath=img/',  //  to make img title same name
+                // 'file-loader?name=img/[name].[ext]', 
+                // to short
+                'file-loader?name=[name].[ext]&outputPath=img/&publicPath=../img', 
+                 //  to make img title same name
+                //  'file-loader?name[hash:6][name][ext]&outputPath=/img/',
+                // make img title  lenth
                 'image-webpack-loader'
 
-               // use: 'file-loader?name[hash:6][name].[ext]&outputPath=img/' make img title  lenth
+             
 
               ]
           }
@@ -71,7 +76,10 @@ module.exports = {
         new ExtractTextPlugin({
             filename: './css/app.css',
             disable: !isProd,
-            allChunks: true
+            allChunks: true,
+       
+            
+            
         }),
         new webpack.HotModuleReplacementPlugin(),
         new PurifyCSSPlugin({

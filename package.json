@@ -4,7 +4,7 @@
   "description": "Webpack project starter.",
   "main": "index.js",
   "scripts": {
-    "dev": "webpack-dev-server",
+    "dev": "webpack-dev-server ",
     "prod": " npm run clean && NODE_ENV=production webpack -p ",
     "clean": "rimraf ./dist/*"
   },
@@ -39,6 +39,7 @@
     "webpack-dev-server": "^2.2.0"
   },
   "dependencies": {
+    "font-awesome-webpack-4": "^1.0.0",
     "popper.js": "^1.14.4",
     "postcss": "^7.0.4",
     "postcss-loader": "^3.0.0",
