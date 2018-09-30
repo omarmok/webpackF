@@ -1,8 +1,6 @@
 /*jshint esversion: 6 */
-const css = require('./css/app.scss');
+const css = require(['./css/app.scss','./css/app2.scss']);
 const js = require('./js/main.js');
-
-
 
 import 'bootstrap';
 
