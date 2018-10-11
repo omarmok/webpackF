@@ -43,6 +43,7 @@
     "popper.js": "^1.14.4",
     "postcss": "^7.0.4",
     "postcss-loader": "^3.0.0",
+    "purifycss-loader": "^1.0.1",
     "tether": "^1.4.5"
   }
 }

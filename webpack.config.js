@@ -18,10 +18,10 @@ const path = require("path");
 
 module.exports = {
 
-    entry: './src/app.js',
+    entry: './src/js/app.js',
     output: {
         path: path.resolve(__dirname, "dist"),
-        filename: 'app.bundle.js',
+        filename: 'js/app.bundle.js',
     },
     module: {
         rules: [
@@ -35,13 +35,22 @@ module.exports = {
                 // 'file-loader',
                 // 'file-loader?name=img/[name].[ext]',
                 // to short
-                'file-loader?name=[name].[ext]&outputPath=img/&publicPath=../img',
+                'file-loader?name=[name].[ext]&outputPath=./img/&publicPath=./img',
                 //  to make img title same name
                 //  'file-loader?name[hash:6][name][ext]&outputPath=/img/',
                 // make img title  lenth
-                'image-webpack-loader'
+
+                'image-webpack-loader',
               ]
-          }
+          },
+
+
+          {
+            test: /\.(eot|svg|ttf|woff|woff2)$/,
+            use: [
+              'file-loader?name=[name].[ext]&outputPath=./fonts/&publicPath=/fonts/',
+            ]
+        }
         ]
     },
     devServer: {
@@ -55,9 +64,9 @@ module.exports = {
     plugins: [
         new HtmlWebpackPlugin({
             title: 'custom title',
-            // minify: {
-            //     collapseWhitespace: true
-            // },
+            minify: {
+                collapseWhitespace: true
+            },
             hash: true,
             template: './src/index.html',
         }),
